@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Мощность парового двигателя</title>
+    <link rel="stylesheet" type="text/css" href="css/main-styles.css">
+    <link rel="stylesheet" type="text/css" href="css/help-modal-window.css">
+    <link rel="stylesheet" type="text/css" href="css/engine-power-calculator.css"/>
+    <script rel="script" type="application/javascript" src="js/SEP.js"></script>
+</head>
+
+<body>
+
+<div id="blackout-about-modal-window">
+    <div id="about-modal-window">
+        <h1>О программе</h1>
+        <p>Данная программа имеет клиент-серверную архитектуру
+            и создана для того, чтобы помочь Вам расчитать мощность двигателей.</p>
+        <a href="#">Назад</a>
+    </div>
+</div>
+
+<div id="blackout-contacts-modal-window">
+    <div id="contacts-modal-window">
+        <h1>Контактные данные</h1>
+        <p><a href="mailto:pickalov.artyom@yandex.ru">Электронная почта</a></p>
+        <p><a href="https://vk.com/wizardkeni">Страница ВКонтакте</a></p>
+        <a href="#">Назад</a>
+    </div>
+</div>
+
+<ul id="horizontal-navbar">
+    <li><a href="home.html">Главная</a></li>
+    <li><a>Помощь</a>
+        <ul>
+            <li><a href="#blackout-about-modal-window">О программе</a></li>
+            <li><a href="#blackout-contacts-modal-window">Контактная информация</a></li>
+        </ul>
+    </li>
+</ul>
+
+<div id="outer-calculator-container">
+    <div id="calculator-container">
+        <div id="calculator-name">
+            <strong>Расчет мощности паровой машины</strong>
+        </div>
+
+        <div id="calculator-background">
+            <form id="se-calculator">
+                <h4>Расчет мощности ПМ (в дюймовой системе)</h4>
+                <div id="sepmp">
+                    <label>Среднее давление в поршне:</label>
+                    <div>
+                        <label for="se-piston-medium-pressure"></label><input id="se-piston-medium-pressure" name="input" type="text" required>
+                        <div style="display: inline-block">фунтов/дюйм<sup>2</sup></div>
+                    </div>
+                </div>
+                <div id="seps">
+                    <label>Ход поршня:</label>
+                    <div>
+                        <label for="se-piston-stroke"></label><input id="se-piston-stroke" name="input" type="text" required>
+                        <div style="display: inline-block">футов</div>
+                    </div>
+                </div>
+                <div id="sepa">
+                    <label>Площадь поршня:</label>
+                    <div>
+                        <label for="se-piston-area"></label><input id="se-piston-area" name="input" type="text" required>
+                        <div style="display: inline-block">дюйм<sup>2</sup></div>
+                    </div>
+                </div>
+                <div id="sef">
+                    <label>Число тактов в минуту:</label>
+                    <div>
+                        <label for="se-frequency"></label><input id="se-frequency" name="input" type="text" required>
+                        <div style="display: inline-block">об./мин.</div>
+                    </div>
+                </div>
+                <div id="ser">
+                    <div id="serb">
+                        <button name="button" onclick="SEP.calculateSteamEnginePower()">Рассчитать
+                        </button>
+                    </div>
+                    <div>
+                        <label for="se-result"></label><input id="se-result" name="input" type="text" disabled>
+                        <div style="display: inline-block">кВт</div>
+                    </div>
+                </div>
+            </form>
+
+            <div id="se-theory">
+                <h2 elementtiming="title">Расчет мощности ПМ (в дюймовой системе)</h2>
+                <p>Имеется общая английская <a href="files/se-calculator-formula.png">формула</a> для расчета мощности в индикаторных лошадиных силах.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

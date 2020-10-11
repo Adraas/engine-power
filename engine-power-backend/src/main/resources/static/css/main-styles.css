@@ -1,0 +1,62 @@
+html {
+    background-image: url("../files/engine-art.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-attachment: fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#horizontal-navbar ul {
+    display: none;
+    background-color: #f90;
+    position: absolute;
+    top: 100%;
+}
+
+#horizontal-navbar li:hover ul {
+    display: block;
+}
+
+#horizontal-navbar, #horizontal-navbar ul {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+#horizontal-navbar {
+    height: 30px;
+    background-color: #666;
+    padding-left: 25px;
+    min-width: 470px;
+}
+
+#horizontal-navbar li {
+    float: left;
+    position: relative;
+    height: 100%;
+}
+
+#horizontal-navbar li a {
+    display: block;
+    padding: 6px;
+    width: 200px;
+    color: #fff;
+    text-decoration: none;
+    text-align: center;
+}
+
+#horizontal-navbar ul li {
+    float: none;
+}
+
+#horizontal-navbar li:hover {
+    background-color: #f90;
+}
+
+#horizontal-navbar ul li:hover {
+    background-color: #666;
+}
+

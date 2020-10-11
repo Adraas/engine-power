@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Мощность ДВС</title>
+    <link rel="stylesheet" type="text/css" href="css/main-styles.css">
+    <link rel="stylesheet" type="text/css" href="css/help-modal-window.css">
+    <link rel="stylesheet" type="text/css" href="css/engine-power-calculator.css"/>
+    <script rel="script" type="application/javascript" src="js/ICEP.js"></script>
+</head>
+
+<body>
+
+<div id="blackout-about-modal-window">
+    <div id="about-modal-window">
+        <h1>О программе</h1>
+        <p>Данная программа имеет клиент-серверную архитектуру
+            и создана для того, чтобы помочь Вам расчитать мощность двигателей.</p>
+        <a href="#">Назад</a>
+    </div>
+</div>
+
+<div id="blackout-contacts-modal-window">
+    <div id="contacts-modal-window">
+        <h1>Контактные данные</h1>
+        <p><a href="mailto:pickalov.artyom@yandex.ru">Электронная почта</a></p>
+        <p><a href="https://vk.com/wizardkeni">Страница ВКонтакте</a></p>
+        <a href="#">Назад</a>
+    </div>
+</div>
+
+<ul id="horizontal-navbar">
+    <li><a href="home.html">Главная</a></li>
+    <li><a>Помощь</a>
+        <ul>
+            <li><a href="#blackout-about-modal-window">О программе</a></li>
+            <li><a href="#blackout-contacts-modal-window">Контактная информация</a></li>
+        </ul>
+    </li>
+</ul>
+
+<div id="outer-calculator-container">
+    <div id="calculator-container">
+        <div id="calculator-name">
+            <strong>Расчет мощности ДВС</strong>
+        </div>
+
+        <div id="calculator-background">
+            <form id="ice-torque-calculator">
+                <h4>Расчет мощности по крутящему моменту</h4>
+                <div id="icetwev">
+                    <label>Рабочий объем двигателя:</label>
+                    <div>
+                        <label for="ice-torque-working-engine-volume"></label><input id="ice-torque-working-engine-volume" name="input" type="text" required>
+                        <div style="display: inline-block">см<sup>3</sup></div>
+                    </div>
+                </div>
+                <div id="icetep">
+                    <label>Эффективное давление в камере сгорания:</label>
+                    <div>
+                        <label for="ice-torque-effective-pressure"></label><input id="ice-torque-effective-pressure" name="input" type="text" required>
+                        <div style="display: inline-block">бар</div>
+                    </div>
+                </div>
+                <div id="icetss">
+                    <label>Скорость оборотов КВ:</label>
+                    <div>
+                        <label for="ice-torque-shaft-speed"></label><input id="ice-torque-shaft-speed" name="input" type="text" required>
+                        <div style="display: inline-block">об./мин.</div>
+                    </div>
+                </div>
+                <div id="icetr">
+                    <div id="icetrb">
+                        <button name="button" onclick="ICEPC.calculateInternalCombustionEnginePowerByTorque()">Рассчитать
+                        </button>
+                    </div>
+                    <div>
+                        <label for="ice-torque-result"></label><input id="ice-torque-result" name="input" type="text" disabled>
+                        <div style="display: inline-block">кВт</div>
+                    </div>
+                </div>
+            </form>
+
+            <div id="ice-theory-t">
+                <h2 elementtiming="title">Мощность через крутящий момент</h2>
+                <p>Один из способов вычисления мощности является определение зависимости крутящего момента мотора от количества оборотов.</p>
+                <p>Любой момент в физике – произведение силы на плечо ее приложения. Крутящий момент – произведение силы, которую может развивать двигатель для преодоления сопротивления нагрузки, на плечо ее приложения. Именно данный параметр определяет, насколько быстро мотор достигает своей максимальной мощности.</p>
+                <p>Крутящий момент можно определить, как отношение произведения рабочего объема на среднее эффективное давление в камере сгорания к 0,12566 (константа):</p>
+                <ul><li>M = (V<sub>рабочий </sub>* P<sub>эффективное</sub>)/0,12566, где V<sub>рабочий </sub>– рабочий объем мотора [л], P<sub>эффективное</sub> – эффективное давление в камере сгорания [бар].</li></ul>
+            </div>
+
+            <hr>
+            <form id="ice-volume-calculator">
+                <h4>Расчет мощности по объему двигателя</h4>
+                <div id="icevev">
+                    <label>Объем двигателя:</label>
+                    <div>
+                        <label for="ice-volume-engine-volume"></label><input id="ice-volume-engine-volume" name="input" type="text" required>
+                        <div style="display: inline-block">см<sup>3</sup></div>
+                    </div>
+                </div>
+                <div id="icevmep">
+                    <label>Среднее эффективное давление:</label>
+                    <div>
+                        <label for="ice-volume-medium-effective-pressure"></label><input id="ice-volume-medium-effective-pressure" name="input" type="text">
+                        <div style="display: inline-block">МПа</div>
+                    </div>
+                </div>
+                <div id="icevss">
+                    <label>Скорость оборотов КВ:</label>
+                    <div>
+                        <label for="ice-volume-shaft-speed"></label><input id="ice-volume-shaft-speed" name="input" type="text" required>
+                        <div style="display: inline-block">об./мин.</div>
+                    </div>
+                </div>
+                <div id="icevr">
+                    <div id="icevrb">
+                        <button name="button" onclick="ICEPC.calculateInternalCombustionEnginePowerByVolume()">Рассчитать
+                        </button>
+                    </div>
+                    <div>
+                        <label for="ice-volume-result"></label><input id="ice-volume-result" name="input" type="text" disabled>
+                        <div style="display: inline-block">кВт</div>
+                    </div>
+                </div>
+            </form>
+
+            <div id="ice-theory-v">
+                <h2 elementtiming="title">Мощность через объем двигателя</h2>
+                <p>Не всегда есть возможность определить крутящий момент двигателя. Иногда автовладельцы и вовсе не знают значения этого параметра. В таком случае мощность двигательного агрегата можно узнать при помощи объема мотора.</p>
+                <p>Для этого понадобится умножить объем агрегата на частоту вращения коленвала, а также на среднее эффективное давление. Полученную величину необходимо разделить на 120:</p>
+                <ul><li>P = (V * n * P<sub>эффективное</sub>)/120 где V – объем двигателя [см<sup>3</sup>], n – скорость вращения коленвала [об/мин], P<sub>эффективное </sub>– среднее эффективное давление [МПА], 120 – константа, коэффициент пропорциональности.</li></ul>
+                <p>Так производится расчет мощности двигателя автомобиля с помощью объема агрегата.</p>
+                <p>Чаще всего значение P<sub>эффективное</sub> в бензиновых двигателях стандартного образца варьируется от 0,82 МПа до 0,85 МПа, в форсированных моторах – 0,9 МПа, а в дизельных агрегатах значение давления находится в промежутке от 0,9 МПа до 2,5 МПа.</p>
+            </div>
+
+            <hr>
+            <form id="ice-air-flow-calculator">
+                <h4>Расчет мощности по расходу воздуха</h4>
+                <div id="iceafaf">
+                    <label>Расход воздуха:</label>
+                    <div>
+                        <label for="ice-air-flow-air-flow"></label><input id="ice-air-flow-air-flow" name="input" type="text" required>
+                        <div style="display: inline-block">кг/ч</div>
+                    </div>
+                </div>
+                <div id="iceafr">
+                    <div id="iceafrb">
+                        <button name="button" onclick="ICEPC.calculateInternalCombustionEnginePowerByAirFlow()">Рассчитать
+                        </button>
+                    </div>
+                    <div>
+                        <label for="ice-air-flow-result"></label><input id="ice-air-flow-result" name="input" type="text" disabled>
+                        <div style="display: inline-block">кВт</div>
+                    </div>
+                </div>
+            </form>
+
+            <div id="ice-theory-af">
+                <h2 elementtiming="title">Мощность через расход воздуха</h2>
+                <p>Мощность агрегата можно определить и по расходу воздуха. Правда, данный метод расчета доступен только тем автовладельцам, у которых установлен бортовой компьютер, позволяющий зафиксировать расход воздуха при 5,5 тысячи оборотов на третьей передаче.</p>
+                <p>Чтобы получить приблизительную мощность двигателя, необходимо полученный при вышеописанных условиях расход разделить на три. Формула выглядит так:</p>
+                <ul><li>P = G/3, где G – расход воздуха.</li></ul>
+                <p>Данный расчет характеризует работу двигателя в идеальных условиях, то есть без учета потерь на трансмиссию, сторонних потребителей и аэродинамическое сопротивление. Реальная мощность ниже вычисленной на 10 или даже 20%.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

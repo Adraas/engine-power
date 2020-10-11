@@ -1,0 +1,28 @@
+#vertical-navbar {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    min-width: 400px;
+}
+
+#vertical-navbar li {
+    border-left: 10px solid #666;
+    border-bottom: 1px solid #666;
+}
+
+#vertical-navbar a {
+    background-color: #949494;
+    color: #fff;
+    padding: 5px;
+    font-size: 150%;
+    text-decoration: none;
+    font-weight: bold;
+    border-left: 5px solid #33ADFF;
+    display: block;
+    top: 100%;
+}
+
+#vertical-navbar a:hover {
+    background-color: #666;
+    border-left: 5px solid #3333FF;
+}

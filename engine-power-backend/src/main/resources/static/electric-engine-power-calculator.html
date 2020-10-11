@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Мощность электродвигателя</title>
+    <link rel="stylesheet" type="text/css" href="css/main-styles.css">
+    <link rel="stylesheet" type="text/css" href="css/help-modal-window.css">
+    <link rel="stylesheet" type="text/css" href="css/engine-power-calculator.css"/>
+    <script rel="script" type="application/javascript" src="js/EEP.js"></script>
+</head>
+
+<body>
+
+<div id="blackout-about-modal-window">
+    <div id="about-modal-window">
+        <h1>О программе</h1>
+        <p>Данная программа имеет клиент-серверную архитектуру
+            и создана для того, чтобы помочь Вам расчитать мощность двигателей.</p>
+        <a href="#">Назад</a>
+    </div>
+</div>
+
+<div id="blackout-contacts-modal-window">
+    <div id="contacts-modal-window">
+        <h1>Контактные данные</h1>
+        <p><a href="mailto:pickalov.artyom@yandex.ru">Электронная почта</a></p>
+        <p><a href="https://vk.com/wizardkeni">Страница ВКонтакте</a></p>
+        <a href="#">Назад</a>
+    </div>
+</div>
+
+<ul id="horizontal-navbar">
+    <li><a href="home.html">Главная</a></li>
+    <li><a>Помощь</a>
+        <ul>
+            <li><a href="#blackout-about-modal-window">О программе</a></li>
+            <li><a href="#blackout-contacts-modal-window">Контактная информация</a></li>
+        </ul>
+    </li>
+</ul>
+
+<div id="outer-calculator-container">
+    <div id="calculator-container">
+        <div id="calculator-name">
+            <strong>Расчет мощности электродвигателя</strong>
+        </div>
+
+        <div id="calculator-background">
+            <form id="aee-calculator">
+                <h4>Расчет мощности асинхронного двигателя</h4>
+                <div id="aeec">
+                    <label>Сила тока:</label>
+                    <div>
+                        <label for="aee-current"></label><input id="aee-current" name="input" type="text" required>
+                        <div style="display: inline-block">А</div>
+                    </div>
+                </div>
+                <div id="aeev">
+                    <label>Напряжение:</label>
+                    <div>
+                        <label for="aee-voltage"></label><input id="aee-voltage" name="input" type="text" required>
+                        <div style="display: inline-block">В</div>
+                    </div>
+                </div>
+                <div id="aeer">
+                    <div id="aeerb">
+                        <button name="button" onclick="EEP.calculateAsynchronousElectricEnginePower()">Рассчитать
+                        </button>
+                    </div>
+                    <div>
+                        <label for="aee-result"></label><input id="aee-result" name="input" type="text" disabled>
+                        <div style="display: inline-block">кВт</div>
+                    </div>
+                </div>
+            </form>
+
+            <div id="aee-theory">
+                <h2 elementtiming="title">Мощность асинхронного двигателя</h2>
+                <p>В технической области науки выделяют три вида мощности:</p>
+                <ul><li>полную (обозначается буквой S);</li><li>активную (обозначается буквой P);</li><li>реактивную (обозначается буквой Q).</li></ul>
+                <p>Полную мощность можно представить в виде вектора, который имеет действительную и мнимую часть (стоит вспомнить раздел математики, связанный с комплексными числами).</p>
+                <p>Значение полной мощности, если помнить, что ее можно представить в виде вектора, можно рассчитать по теореме Пифагора как корень суммы квадратов активной и реактивной мощности:</p>
+                <ul><li>S = (P<sup>2</sup>+Q<sup>2</sup>)<sup>1/2</sup>.</li></ul>
+                <p>Если рассчитать формулу полной мощности в общем виде, то получится, что S – это произведение тока на напряжение:</p>
+                <ul><li>S = I * U.</li></ul>
+            </div>
+
+            <hr>
+            <form id="tpe-calculator">
+                <h4>Расчет мощности 3-фазного асинхронного двигателя</h4>
+                <div id="tpepc">
+                    <label>Фазовая сила тока:</label>
+                    <div>
+                        <label for="tpe-phase-current"></label><input id="tpe-phase-current" name="input" type="text" required>
+                        <div style="display: inline-block">А</div>
+                    </div>
+                </div>
+                <div id="tpepv">
+                    <label>Фазовое напряжение:</label>
+                    <div>
+                        <label for="tpe-phase-voltage"></label><input id="tpe-phase-voltage" name="input" type="text">
+                        <div style="display: inline-block">В</div>
+                    </div>
+                </div>
+                <div id="tpeaf">
+                    <label>&#966;:</label>
+                    <div>
+                        <label for="tpe-angle-f"></label><input id="tpe-angle-f" name="input" type="text" required>
+                        <div style="display: inline-block">&#176;</div>
+                    </div>
+                </div>
+                <div id="tpelp">
+                    <label>Потеря мощности:</label>
+                    <div>
+                        <label for="tpe-lost-power"></label><input id="tpe-lost-power" name="input" type="text" required>
+                        <div style="display: inline-block">кВт</div>
+                    </div>
+                </div>
+                <div id="tper">
+                    <div id="tperb">
+                        <button name="button" onclick="EEP.calculateThreePhaseElectricEnginePower()">Рассчитать
+                        </button>
+                    </div>
+                    <div>
+                        <label for="tpe-result"></label><input id="tpe-result" name="input" type="text" disabled>
+                        <div style="display: inline-block">кВт</div>
+                    </div>
+                </div>
+            </form>
+
+            <div id="tpe-theory">
+                <h2 elementtiming="title">Расчет мощности 3-фазного асинхронного агрегата</h2>
+                <p>Чтобы рассчитать полезную мощность на обмотке статора асинхронного 3-фазного двигателя, следует умножить фазное напряжение на фазный ток и на коэффициент мощности, а полученное значение мощности умножить на три (по количеству фаз):</p>
+                <ul><li>P<sub>статора</sub> = 3 * U<sub>ф</sub> * I<sub>ф</sub> * cosφ.</li></ul>
+                <p>Расчет мощности эл. двигателя, имеющей активный характер, то есть мощности, которая снимается с вала двигателя, производится так:</p>
+                <ul><li>P<sub>выходная</sub> = P<sub>статора</sub> – P<sub>потерь</sub>.</li></ul>
+                <p>В асинхронном двигателе имеют место следующие потери:</p>
+                <ul><li>электрические в обмотке статора;</li><li>в стали сердечника статора;</li><li>электрические в обмотке ротора;</li><li>механические;</li><li>добавочные.</li></ul>
+            </div>
+
+            <hr>
+            <form id="eed-calculator">
+                <h4>Расчет мощности по габаритам</h4>
+                <div id="eedcd">
+                    <label>Диаметр сердечника:</label>
+                    <div>
+                        <label for="eed-core-diameter"></label><input id="eed-core-diameter" name="input" type="text" required>
+                        <div style="display: inline-block">мм</div>
+                    </div>
+                </div>
+                <div id="eedss">
+                    <label>Фазовое напряжение:</label>
+                    <div>
+                        <label for="eed-shaft-speed"></label><input id="eed-shaft-speed" name="input" type="text">
+                        <div style="display: inline-block">В</div>
+                    </div>
+                </div>
+                <div id="eedf">
+                    <label>Частота:</label>
+                    <div>
+                        <label for="eed-frequency"></label><input id="eed-frequency" name="input" type="text" required>
+                        <div style="display: inline-block">Гц</div>
+                    </div>
+                </div>
+                <div id="eedcl">
+                    <label>Длина сердечника:</label>
+                    <div>
+                        <label for="eed-core-length"></label><input id="eed-core-length" name="input" type="text" required>
+                        <div style="display: inline-block">мм</div>
+                    </div>
+                </div>
+                <div id="eedr">
+                    <div id="eedrb">
+                        <button name="button" onclick="EEP.calculateElectricEnginePowerByDimensions()">Рассчитать
+                        </button>
+                    </div>
+                    <div>
+                        <label for="eed-result"></label><input id="eed-result" name="input" type="text" disabled>
+                        <div style="display: inline-block">кВт</div>
+                    </div>
+                </div>
+            </form>
+
+            <div id="eed-theory">
+                <h2 elementtiming="title">Мощность по габаритам</h2>
+                <p>Статор имеет множество различных составляющих, одна из которых – сердечник. Для расчета мощности двигателя с использованием габаритов следует выполнить следующие действия:</p>
+                <ol><li>Измерить длину и диаметр сердечника.</li><li>Вычислить постоянную C, которая будет использована при дальнейшем расчете. C = (π * D * n)/(120 * f), где D – диаметр сердечника, n – скорость вращения вала, f – частота напряжения (чаще всего это промышленная частота 50 Гц).</li><li>Вычислить мощность P по формуле P = C * D<sup>2</sup> * l * n * 10<sup>-6</sup>, где C – вычисленная константа, D – диаметр сердечника, n – скорость вращения вала, l – длина сердечника.</li></ol>
+                <p>Лучше производить все измерения и вычисления с максимальной точностью, чтобы расчет мощности двигателя электропривода был максимально приближен к действительности.</p>
+            </div>
+
+            <hr>
+            <form id="eetf-calculator">
+                <h4>Расчет мощности по тяговой силе</h4>
+                <div id="eetftf">
+                    <label>Тяговая сила:</label>
+                    <div>
+                        <label for="eetf-tractive-force"></label><input id="eetf-tractive-force" name="input" type="text" required>
+                        <div style="display: inline-block">Н</div>
+                    </div>
+                </div>
+                <div id="eetfss">
+                    <label>Скорость вращения вала:</label>
+                    <div>
+                        <label for="eetf-shaft-speed"></label><input id="eetf-shaft-speed" name="input" type="text">
+                        <div style="display: inline-block">об./мин.</div>
+                    </div>
+                </div>
+                <div id="eetfcr">
+                    <label>Радиус сердечника:</label>
+                    <div>
+                        <label for="eetf-core-radius"></label><input id="eetf-core-radius" name="input" type="text" required>
+                        <div style="display: inline-block">мм</div>
+                    </div>
+                </div>
+                <div id="eetfr">
+                    <div id="eetfrb">
+                        <button name="button" onclick="EEP.calculateElectricEnginePowerTractiveForce()">Рассчитать
+                        </button>
+                    </div>
+                    <div>
+                        <label for="eetf-result"></label><input id="eetf-result" name="input" type="text" disabled>
+                        <div style="display: inline-block">кВт</div>
+                    </div>
+                </div>
+            </form>
+
+            <div id="eetf-theory">
+                <h2 elementtiming="title">Мощность по тяговой силе</h2>
+                <p>Мощность асинхронного двигателя можно определить и с помощью значения тяговой силы. Для этого понадобится измерить радиус сердечника (чем точнее, тем лучше), зафиксировать, с какой скоростью вращается вал агрегата, а также измерить с помощью динамометра тяговую силу двигателя.</p>
+                <p>Все данные необходимо подставить в следующую формулу:</p>
+                <ul><li>P = 2*π * F * n * r, где F – тяговая сила, n – скорость вращения вала, r – радиус сердечника.</li></ul>
+            </div>
+
+            <hr>
+            <form id="eedc-calculator">
+                <h4>Расчет мощности двигателя постоянного тока</h4>
+                <div id="eedcef">
+                    <label>ЭДС якоря:</label>
+                    <div>
+                        <label for="eedc-electromotive-force"></label><input id="eedc-electromotive-force" name="input" type="text" required>
+                        <div style="display: inline-block">В</div>
+                    </div>
+                </div>
+                <div id="eedcc">
+                    <label>Сила тока якоря:</label>
+                    <div>
+                        <label for="eedc-current"></label><input id="eedc-current" name="input" type="text" required>
+                        <div style="display: inline-block">Гц</div>
+                    </div>
+                </div>
+                <div id="eedcr">
+                    <div id="eedcrb">
+                        <button name="button" onclick="EEP.calculateDirectCurrentElectricEnginePower()">Рассчитать
+                        </button>
+                    </div>
+                    <div>
+                        <label for="eedc-result"></label><input id="eedc-result" name="input" type="text" disabled>
+                        <div style="display: inline-block">кВт</div>
+                    </div>
+                </div>
+            </form>
+
+            <div id="eedc-theory">
+                <h2 elementtiming="title">Двигатель постоянного тока</h2>
+                <p>Двигателем постоянного тока называется машина, преобразующая электрическую мощность, получаемую от постоянного тока, в механическую. Принцип ее действия имеет мало общего с асинхронной машиной.</p>
+                <p>Двигатель постоянного тока состоит из статора, якоря и опоры, а также контактных щеток и коллектора.</p>
+                <p>Коллектор – устройство, преобразующее переменный ток в постоянный (и наоборот).</p>
+                <p>Чтобы рассчитать полезную мощность такого агрегата, которая расходуется на выполнение какой-либо работы, достаточно умножить ЭДС якоря на ток якоря:</p>
+                <ul><li>P = E<sub>a</sub> * I<sub>a</sub>.</li></ul>
+                <p>Как видно, расчет мощности двигателя постоянного тока намного проще расчетов, производимых в асинхронном двигателе.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
