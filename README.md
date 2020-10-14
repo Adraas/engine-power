@@ -1,5 +1,9 @@
 # engine-power
 
+The course project about the calculating of the power of the different types engines.
+
+---
+
 __The system requirements:__
 - maven;
 - JVM;
