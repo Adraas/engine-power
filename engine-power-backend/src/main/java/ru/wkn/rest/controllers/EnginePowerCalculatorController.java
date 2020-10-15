@@ -23,7 +23,7 @@ public class EnginePowerCalculatorController {
 
     private final EnginePowerCalculator<ElectricEngineParameters> electricEnginePowerCalculator;
     private final EnginePowerCalculator<InternalCombustionEngineParameters> internalCombustionEnginePowerCalculator;
-    private final EnginePowerCalculator<SteamEngineParametersImpl> steamEnginePowerCalculator;
+    private final EnginePowerCalculator<SteamEngineParameters> steamEnginePowerCalculator;
 
     @PostMapping(path = "/calculate-asynchronous-electric-engine-power", consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
