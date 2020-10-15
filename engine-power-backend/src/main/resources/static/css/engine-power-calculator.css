@@ -50,7 +50,8 @@ button[name="button"] {
     padding-bottom: 20px;
 }
 
-#ice-theory-t, #ice-theory-v, #ice-theory-af, #aee-theory, #tpe-theory, #eed-theory, #eetf-theory, #eedc-theory, #se-theory {
+#ice-theory-t, #ice-theory-v, #ice-theory-af, #aee-theory, #tpe-theory, #eed-theory, #eetf-theory, #eedc-theory,
+#se-theory, #intro-theory, #ice-intro-theory, #ee-intro-theory, #se-intro-theory {
     padding: 20px 10px;
     background-color: #EFEFEF;
     box-shadow: inset 0 0 10px lightgray;
